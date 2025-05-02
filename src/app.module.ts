@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
 import { DataBaseModule } from './database/database.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataBaseService } from './database/database.service';
+import { UsuarioModule } from './usuario/usuario.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -19,6 +20,7 @@ const ENV = process.env.NODE_ENV;
       useClass: DataBaseService,
     }),
     DataBaseModule,
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
