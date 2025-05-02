@@ -1,0 +1,41 @@
+services:
+  api-test:
+    build:
+      context: .
+      dockerfile: ./.docker/api/Dockerfile
+    entrypoint: ./.docker/api/entrypoint.test.sh
+    container_name: api-test
+    volumes:
+      - '.:/home/node/app'
+    environment:
+      - NODE_ENV=test
+      - TEST=$TEST
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db-test
+    networks:
+      - api-net-test
+    mem_limit: 2g
+
+  db-test:
+    build:
+      context: ./.docker/postgres
+      dockerfile: Dockerfile
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+    container_name: db-test
+    volumes:
+      - './.docker/postgres/config/postgresql.conf:/etc/postgresql/postgresql.conf'
+    environment:
+      - POSTGRES_DB=gac-test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5050:5050'
+    networks:
+      - api-net-test
+    mem_limit: 1g
+
+networks:
+  api-net-test:
+    driver: bridge
