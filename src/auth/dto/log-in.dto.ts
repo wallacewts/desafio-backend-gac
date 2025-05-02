@@ -6,13 +6,7 @@ import {
   MaxLength,
 } from 'class-validator';
 
-export class CreateUsuarioDTO {
-  @IsString()
-  @IsNotEmpty()
-  @IsDefined()
-  @MaxLength(60)
-  nome!: string;
-
+export class LogInDTO {
   @IsString()
   @IsNotEmpty()
   @IsDefined()

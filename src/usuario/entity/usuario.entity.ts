@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { CreateUsuarioDto } from '../dto/create-usuario.dto';
-import { UpdateUsuarioDto } from '../dto/update-usuario.dto';
+import { CreateUsuarioDTO } from '../dto/create-usuario.dto';
+import { UpdateUsuarioDTO } from '../dto/update-usuario.dto';
 
 @Entity({ name: 'usuario' })
 export class Usuario {
@@ -16,20 +16,18 @@ export class Usuario {
   @Column('varchar', {
     length: 100,
     nullable: false,
-    select: false,
   })
   senha!: string;
 
   @Column('numeric', {
     nullable: false,
-    select: false,
     default: 0,
     precision: 16,
     scale: 4,
   })
   saldo!: string;
 
-  constructor(createUsuarioDto: CreateUsuarioDto | UpdateUsuarioDto) {
+  constructor(createUsuarioDto: CreateUsuarioDTO | UpdateUsuarioDTO) {
     Object.assign(this, createUsuarioDto);
   }
 }
