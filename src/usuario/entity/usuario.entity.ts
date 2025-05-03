@@ -1,6 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { CreateUsuarioDTO } from '../dto/create-usuario.dto';
-import { UpdateUsuarioDTO } from '../dto/update-usuario.dto';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Transacao } from '../../transacao/entity/transacao.entity';
 
 @Entity({ name: 'usuario' })
 export class Usuario {
@@ -27,7 +26,9 @@ export class Usuario {
   })
   saldo!: string;
 
-  constructor(createUsuarioDto: CreateUsuarioDTO | UpdateUsuarioDTO) {
-    Object.assign(this, createUsuarioDto);
-  }
+  @OneToMany(() => Transacao, (transacao) => transacao.remetente)
+  transferencias: Transacao[];
+
+  @OneToMany(() => Transacao, (transacao) => transacao.destinatario)
+  recebimentos: Transacao[];
 }

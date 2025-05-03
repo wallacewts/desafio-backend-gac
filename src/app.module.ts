@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { DataBaseModule } from './database/database.module';
 import { DataBaseService } from './database/database.service';
 import { UsuarioModule } from './usuario/usuario.module';
+import { TransacaoModule } from './transacao/transacao.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -23,6 +24,7 @@ const ENV = process.env.NODE_ENV;
     DataBaseModule,
     AuthModule,
     UsuarioModule,
+    TransacaoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
