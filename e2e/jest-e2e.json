@@ -1,0 +1,24 @@
+{
+  "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "rootDir": "..",
+  "coverageDirectory": "./coverage/e2e",
+  "testRegex": "/e2e/.*\\.(e2e-test|e2e-spec).(ts|tsx|js)$",
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,tsx,ts}",
+    "!**/node_modules/**",
+    "!src/**/main.{js,jsx,tsx,ts}",
+    "!src/**/ormconfig.{js,jsx,tsx,ts}",
+    "!src/shared/helpers/test/**",
+    "!src/**/data/**",
+    "!src/**/mocks/**",
+    "!src/migration/**"
+  ],
+  "testPathIgnorePatterns": ["/node_modules/", "/src/"],
+  "coverageReporters": ["json", "lcov"],
+  "testEnvironment": "node",
+  "coveragePathIgnorePatterns": [".spec.ts$"],
+  "testTimeout": 100000
+}

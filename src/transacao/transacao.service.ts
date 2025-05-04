@@ -63,8 +63,9 @@ export class TransacaoService {
       });
 
       await runner.commitTransaction();
+      const [createdTransacao] = transacao.raw as Transacao[];
 
-      return transacao.raw as Transacao;
+      return createdTransacao;
     } catch (error) {
       this.#logger.error(error);
       await runner.rollbackTransaction();

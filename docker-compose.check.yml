@@ -36,6 +36,31 @@ services:
       - api-net-test
     mem_limit: 1g
 
+  jaeger:
+    image: jaegertracing/jaeger:2.5.0
+    container_name: jaeger
+    ports:
+      - '8081:16686' # Jaeger UI
+      - '6831:6831/udp' # UDP port for Jaeger agent
+      - '14268:14268' # HTTP port for spans
+    networks:
+      - api-net-test
+
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    container_name: otel-collector
+    command: ['--config=/etc/otel-collector-config.yml']
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
+    ports:
+      - '4317:4317' # OTLP gRPC receiver
+    depends_on:
+      - jaeger
+    links:
+      - jaeger
+    networks:
+      - api-net-test
+
 networks:
   api-net-test:
     driver: bridge

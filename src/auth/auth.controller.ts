@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import {} from 'express';
-import { Usuario } from 'src/usuario/entity/usuario.entity';
+import { Usuario } from '../usuario/entity/usuario.entity';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LogInDTO } from './dto/log-in.dto';

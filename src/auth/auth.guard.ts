@@ -9,7 +9,7 @@ import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { Usuario } from 'src/usuario/entity/usuario.entity';
+import { Usuario } from '../usuario/entity/usuario.entity';
 import { IS_PUBLIC_KEY } from './decorator/public.decorator';
 
 @Injectable()
@@ -54,7 +54,6 @@ export class AuthGuard implements CanActivate {
 
   private extractTokenFromHeader(request: Request): string | undefined {
     const [type, token] = request.headers.authorization?.split(' ') ?? [];
-    console.log(type, token);
     return type === 'Bearer' ? token : undefined;
   }
 }

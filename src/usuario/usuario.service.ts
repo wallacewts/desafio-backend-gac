@@ -10,7 +10,11 @@ export class UsuarioService {
   @InjectRepository(Usuario)
   private readonly repository: Repository<Usuario>;
 
-  async create({ nome, email, senha }: CreateUsuarioDTO) {
+  async create({
+    nome,
+    email,
+    senha,
+  }: CreateUsuarioDTO): Promise<Omit<Usuario, 'senha'>> {
     const userAlreadyExists = await this.repository.findOneBy({
       email,
     });
@@ -27,7 +31,9 @@ export class UsuarioService {
       senha: passwordHash,
     });
 
-    await this.repository.insert(usuario);
+    const { senha: _, ...result } = await this.repository.save(usuario);
+
+    return result;
   }
 
   async findOneByEmail(email: string): Promise<Usuario | null> {

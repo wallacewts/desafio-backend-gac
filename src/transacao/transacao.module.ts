@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { Transacao } from './entity/transacao.entity';
 import { TransacaoController } from './transacao.controller';
 import { TransacaoService } from './transacao.service';

@@ -8,7 +8,7 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 import { Usuario } from '../usuario/entity/usuario.entity';
 import { TransferirDTO } from './dto/transferir.dto';
 import { TransacaoService } from './transacao.service';
