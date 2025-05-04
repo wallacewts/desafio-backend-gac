@@ -4,7 +4,7 @@
 
 ### DEV
 
-    $ docker-compose up
+    $ docker compose up
 
 #### INSTALAR DEPENDÊNCIAS E CRIAR NOVAS FUNCIONALIDADES
 
