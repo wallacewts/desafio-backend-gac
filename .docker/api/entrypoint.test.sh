@@ -14,7 +14,7 @@ if ! [ -z $TEST ] && [ $TEST == 'unit' ]; then
     npm run test:cov
 elif ! [ -z $TEST ] && [ $TEST == 'e2e' ]; then
     echo "Running e2e tests"
-    npm run test:e2e:cov
+    npm run test:e2e
 elif ! [ -z $TEST ] && [ $TEST == 'lint' ]; then
     echo "Running lint"
     npm run lint

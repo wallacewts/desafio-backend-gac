@@ -16,8 +16,8 @@ const sdk = new NodeSDK({
   instrumentations: [new HttpInstrumentation(), new TypeormInstrumentation()],
 });
 
-process.on('beforeExit', async () => {
-  await sdk.shutdown();
+process.on('beforeExit', () => {
+  void sdk.shutdown();
 });
 
 export const initalizeTracing = () => {
