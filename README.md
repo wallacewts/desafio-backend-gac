@@ -26,7 +26,7 @@ $ nest g resource users
   Com o container de desenvolvimento em execução para rodar os tests UNIT ou E2E , acesse o container com o comando:
 
   ```bash
-  $ docker compose exec api-test sh
+  $ docker compose exec api sh
   ```
 
 - UNIT
